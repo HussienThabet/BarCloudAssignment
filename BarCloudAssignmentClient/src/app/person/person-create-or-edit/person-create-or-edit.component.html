@@ -1,0 +1,38 @@
+<div class="modal-header">
+    <h5 class="modal-title">{{modeltitle}}</h5>
+    <button type="button" title="{{modeltitle}}" class="close btn btn-default" data-dismiss="modal"
+      (click)="closeModal()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div class="modal-body">
+
+    <form [formGroup]="controlForm">
+
+      <div class="card card-custom gutter-b">
+        <div class="card-body">
+          <div class="row">
+
+            <div class="col-6">
+              <div class="form-group">
+                <label for="name">{{"Name" }} *</label>
+                <input   maxlength="200"
+                  formControlName="name" type="text" id="name" class="form-control" name="name" minlength="0" />
+                <div *ngIf="saving && controlDtoform.name.errors" class="invalid-feedback d-block">
+                  <div *ngIf="controlDtoform.name.errors.required">Name Is Required 
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </form>
+
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="closeModal()">Close</button>
+    <button type="button" class="btn btn-primary" (click)="save()">Save</button>
+  </div>

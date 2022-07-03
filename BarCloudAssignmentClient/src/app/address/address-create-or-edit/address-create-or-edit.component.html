@@ -1,0 +1,92 @@
+<div class="modal-header">
+    <h5 class="modal-title">{{modeltitle}}</h5>
+    <button type="button" title="{{modeltitle}}" class="close btn btn-default" data-dismiss="modal"
+      (click)="closeModal()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div class="modal-body">
+
+    <form [formGroup]="controlForm">
+
+      <div class="card card-custom gutter-b">
+        <div class="card-body">
+          <div class="row">
+
+            <div class="col-6">
+              <div class="form-group">
+                <label for="buildingNumber">{{"buildingNumber"}} *</label>
+                <input   maxlength="200"
+                  formControlName="buildingNumber" type="number" id="buildingNumber" 
+                  class="form-control" name="buildingNumber" minlength="0" />
+                <div *ngIf="saving && controlDtoform.buildingNumber.errors" class="invalid-feedback d-block">
+                  <div *ngIf="controlDtoform.buildingNumber.errors.required">building Number Is Required 
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-6">
+                <div class="form-group">
+                  <label for="description">{{"description"}} *</label>
+                  <input   maxlength="200"
+                    formControlName="description" type="text" id="description" 
+                    class="form-control" name="description" minlength="0" />
+                  <div *ngIf="saving && controlDtoform.description.errors" class="invalid-feedback d-block">
+                    <div *ngIf="controlDtoform.description.errors.required">building Number Is Required 
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-6">
+                <div class="form-group">
+                  <label for="landmark">{{"landmark"}} *</label>
+                  <input   maxlength="200"
+                    formControlName="landmark" type="text" id="landmark" 
+                    class="form-control" name="landmark" minlength="0" />
+                  <div *ngIf="saving && controlDtoform.landmark.errors" class="invalid-feedback d-block">
+                    <div *ngIf="controlDtoform.landmark.errors.required">building Number Is Required 
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-6">
+                <div class="form-group">
+                  <label for="person">{{"person"}} *</label>
+
+                  <p-dropdown [options]="people" [(ngModel)]="selectedPerson" 
+                  optionLabel="name" [filter]="true" filterBy="name"formControlName="person"
+                  [showClear]="true" placeholder="Select a name">
+                  <ng-template pTemplate="selectedItem">
+                      <div class="country-item country-item-value" *ngIf="selectedPerson">
+                          <div>{{selectedPerson.name}}</div>
+                      </div>
+                  </ng-template>
+                  <ng-template let-country pTemplate="item">
+                      <div class="country-item">
+                          <div>{{country.name}}</div>
+                      </div>
+                  </ng-template>
+              </p-dropdown>
+
+
+                  <div *ngIf="saving && controlDtoform.person.errors" class="invalid-feedback d-block">
+                    <div *ngIf="controlDtoform.person.errors.required">building Number Is Required 
+                    </div>
+                  </div>
+                </div>
+              </div>
+            
+          </div>
+        </div>
+      </div>
+    </form>
+
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="closeModal()">Close</button>
+    <button type="button" class="btn btn-primary" (click)="save()">Save</button>
+  </div>

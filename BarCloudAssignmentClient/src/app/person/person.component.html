@@ -1,0 +1,45 @@
+<div class="row">
+    <div class="col-12">
+        <div class="row">
+            <div class="col-1 "> 
+                <div class="row">
+                    <button type="button" class="btn btn-primary" (click)="createOrEdit(undefined)">
+                        create
+                    </button>
+                    <button type="button" class="btn btn-primary" (click)="getPeople()">
+                        Refresh
+                    </button>
+                </div>
+             
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+<div class="col-12">
+    <div class="card">
+        <p-table [value]="people" class="table">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>Name</th>
+                    <th>Action</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-people>
+                <tr>
+                    <td>{{people.name}}</td>
+                    <td>
+                        <button type="button" class="btn btn-sm btn-secondary m-1" (click)="createOrEdit(people)" title="Edit">
+                            Edit
+                        </button>
+                        <button type="button" class="btn btn-sm  btn-danger  m-1" (click)="Delete(people)"title="Delete">
+                            Delete
+                        </button>
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+</div>

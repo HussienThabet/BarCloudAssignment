@@ -1,0 +1,53 @@
+<div class="row">
+    <div class="col-12">
+        <div class="row">
+            <div class="col-1 "> 
+                <div class="row">
+                    <button type="button" class="btn btn-primary" (click)="createOrEdit(undefined)">
+                        create
+                    </button>
+                    <button type="button" class="btn btn-primary" (click)="getAddresses()">
+                        Refresh
+                    </button>
+                </div>
+             
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+<div class="col-12">
+    <div class="card">
+        <p-table [value]="addresses" class="table">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>Person Name</th>
+                    <th>BuildingNumber</th>
+                    <th>Description</th>
+                    <th>Landmark</th>                    
+                    <th>Action</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-address>
+                <tr>
+                    <td>{{address.person?.name}}</td>
+                    <td>{{address.buildingNumber}}</td>
+                    <td>{{address.description}}</td>
+                    <td>{{address.landmark}}</td>
+                    <td>
+                        <button type="button" class="btn btn-sm btn-secondary m-1" 
+                        (click)="createOrEdit(address)" title="Edit">
+                            Edit
+                        </button>
+                        <button type="button" class="btn btn-sm  btn-danger  m-1" 
+                        (click)="Delete(address)"title="Delete">
+                            Delete
+                        </button>
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+</div>
